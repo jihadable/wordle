@@ -139,52 +139,38 @@ body{
     }
 }
 
-.score{
-    padding: 50px;
-    border-radius: 10px;
+.overlay{
     position: fixed;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0,.5);
+    backdrop-filter: blur(.3rem);
     display: none;
-    background-color: rgba(255,255,255,.5);
+}
 
-    *{
-        color: #ddd
-    }
-    .won,.lost,.guess{
-        font-size: 25px;
-        text-align: center;
-        display: none;
-        color: black;
-    }
+.score{
+    position: fixed;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+    border-radius: .5rem;
+    background-color: rgb(255, 255, 255,.7);
 
-    .value{
-        font-size: 20px;
-        text-align: center;
+    .won, .lost, .guess, .value{
         display: none;
-        color: black;
+        font-size: 1.2rem;
     }
 
     a{
-        padding: 5px;
-        border-radius: 5px;
-        background-color: lime;
-        text-decoration: none;
+        padding: 0.2rem .5rem;
+        border-radius: .2rem;
+        background-color: #0f7a65;
         color: black;
-        font-size: 20px;
-        text-align: center;
-        margin: auto;
-    }
-
-    .guess{
-        padding: 5px 15px;
-        border-radius: 5px;
-        border: 1px solid black;
-        background-color: #734b6d;
-        text-transform: uppercase;
-        font-weight: bold;
-        color: #111;
+        text-decoration: none;
     }
 }
 

@@ -5,6 +5,7 @@ var letters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','
 import { guessWords5 } from "./words.js"
 
 const words = document.querySelectorAll(".word")
+const overlay = document.querySelector(".overlay")
 const score = document.querySelector(".score")
 const won = document.querySelector(".won")
 const lost = document.querySelector(".lost")
@@ -47,7 +48,7 @@ document.addEventListener("keydown",function(event){
     }
 
     // letter
-    if (right == true && unable == false && row != 6 && enter == true){
+    if (right && !unable && row != 6 && enter){
         if (column < 5){
             words[i].innerHTML = x
             words[i].classList.add("border")
@@ -226,10 +227,11 @@ document.addEventListener("keydown",function(event){
                 if (check == 5){
                     setTimeout(() => {
                         unable = true
+                        overlay.style.display = "block"
                         score.style.display = "flex"
                         won.style.display = "block"
                         val.style.display = "block"
-                        val.innerHTML = `${row}/6`
+                        val.innerHTML = `${row}/6 try`
                     }, 800);
                 }
 
@@ -242,10 +244,11 @@ document.addEventListener("keydown",function(event){
                 setTimeout(() => {
                     if (row == 6 && check != 5){
                         unable = true
+                        overlay.style.display = "block"
                         score.style.display = "flex"
                         lost.style.display = "block"
                         document.querySelector(".guess").style.display = "block"
-                        document.querySelector(".guess").innerHTML = wordguess
+                        document.querySelector(".guess").innerHTML = "Word: " + wordguess.toUpperCase()
                     }
                 }, 500);
                 
@@ -264,13 +267,13 @@ keys.forEach(function(key,index){
     key.addEventListener("click",function(){
 
         // enter
-        if (keys[index].classList.contains("enter") && unable == false){
+        if (keys[index].classList.contains("enter") && !unable){
             
             if (column < 5 ){
                 alert("Not Enough")
             }
             
-            else if (checkEnter == true){
+            else if (checkEnter){
     
                 checkEnter = false
     
@@ -354,10 +357,11 @@ keys.forEach(function(key,index){
                     if (check == 5){
                         setTimeout(() => {
                             unable = true
+                            overlay.style.display = "block"
                             score.style.display = "flex"
                             won.style.display = "block"
                             val.style.display = "block"
-                            val.innerHTML = `${row}/6`
+                            val.innerHTML = `${row}/6 try`
                         }, 800);
                     }
     
@@ -370,10 +374,11 @@ keys.forEach(function(key,index){
                     setTimeout(() => {
                         if (row == 6 && check != 5){
                             unable = true
+                            overlay.style.display = "block"
                             score.style.display = "flex"
                             lost.style.display = "block"
                             document.querySelector(".guess").style.display = "block"
-                            document.querySelector(".guess").innerHTML = wordguess
+                            document.querySelector(".guess").innerHTML = "Word: " + wordguess.toUpperCase()
                         }
                     }, 500);
                     
@@ -387,7 +392,7 @@ keys.forEach(function(key,index){
         }
 
         // backspace
-        else if (keys[index].classList.contains("backspace") && unable == false){
+        else if (keys[index].classList.contains("backspace") && !unable){
             if (row == 0){
                 if (column != 0){
                     words[column-1].innerHTML = ""
@@ -460,7 +465,7 @@ keys.forEach(function(key,index){
             enter = true
         }
 
-        else if (unable == false && enter == true){
+        else if (!unable && enter){
             if (column < 5){
                 words[i].innerHTML = keys[index].innerHTML
                 words[i].classList.add("border")
