@@ -5,12 +5,32 @@ var letters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','
 import { guessWords5 } from "./words.js"
 
 const words = document.querySelectorAll(".word")
+const infoBtn = document.querySelector(".info-btn")
+const howToPlay = document.querySelector(".how-to-play")
 const overlay = document.querySelector(".overlay")
 const score = document.querySelector(".score")
 const won = document.querySelector(".won")
 const lost = document.querySelector(".lost")
 const val = document.querySelector(".value")
 const keys = document.querySelectorAll(".keys")
+
+// click how to play
+infoBtn.addEventListener("click", () => {
+    howToPlay.classList.add("active")
+    overlay.style.display = "block"
+})
+
+document.querySelector(".close-how-to-play").addEventListener("click", () => {
+    howToPlay.classList.remove("active")
+    overlay.style.display = "none"
+})
+
+overlay.addEventListener("click", () => {
+    if (howToPlay.classList.contains("active")){
+        howToPlay.classList.remove("active")
+        overlay.style.display = "none"
+    }
+})
 
 let guessWord;
 let random = Math.floor(Math.random()*(guessWords5.length) + 0)

@@ -18,24 +18,35 @@ body{
     background-color: #0f7a65;
 }
 
-.back{
-    display: flex;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
+.btns{
     position: fixed;
-    top: 50px;
-    left: 50px;
-    background-color: rgb(170, 170, 170);
-    cursor: pointer;
+    top: 4rem;
+    left: 4rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
 
-    &:hover{
-        background-color: rgb(170, 170, 170,.7);
+    @media screen and (max-width: 480px) {
+        top: 1rem;
+        left: 1rem;
     }
 
-    svg{
-        margin: auto;
-        color: black;
+    .back, .info-btn{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background-color: rgb(170, 170, 170);
+        cursor: pointer;
+    
+        &:hover{
+            background-color: rgb(170, 170, 170,.7);
+        }
+    
+        svg{
+            margin: auto;
+            color: black;
+        }
     }
 }
 
@@ -139,6 +150,96 @@ body{
     }
 }
 
+.how-to-play{
+    position: fixed;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    z-index: 2;
+    background-color: rgb(255, 255, 255,.7);
+    padding: 1rem;
+    border-radius: .5rem;
+
+    &.active{
+        display: flex;
+    }
+
+    .close-how-to-play{
+        position: absolute;
+        top: -0.5rem;
+        right: -0.5rem;
+        padding: 0.2rem;
+        border-radius: 5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        cursor: pointer;
+    }
+
+    .word-example{
+        display: flex;
+        align-items: center;
+        gap: 0.2rem;
+        font-size: 2rem;
+
+        .letter{
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: .2rem;
+            
+            &.white{
+                background-color: #dee;
+            }
+
+            &.yellow{
+                background-color: #fad02c;
+            }
+
+            &.green{
+                background-color: #0f7a65;
+            }
+        }
+    }
+
+    .word-info{
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        & > div{
+            display: flex;
+            align-items: center;
+            gap: 0.2rem;
+
+            .letter{
+                width: 2rem;
+                height: 2rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: .2rem;
+                
+                &.white{
+                    background-color: #dee;
+                }
+    
+                &.yellow{
+                    background-color: #fad02c;
+                }
+    
+                &.green{
+                    background-color: #0f7a65;
+                }
+            }
+        }
+    }
+}
+
 .overlay{
     position: fixed;
     top: 0;
@@ -186,11 +287,7 @@ body{
     }
 }
 
-@media screen and (max-width: 600px) {
-    .back{
-        top: 20px;
-        left: 20px;
-    }
+@media screen and (max-width: 480px) {
 
     .content{
         flex-direction: column;
@@ -216,15 +313,9 @@ body{
     }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 481px) and (max-width: 1023px) {
     .content{
         flex-direction: column;
         gap: 20px;
-    }
-}
-
-@media screen and (max-width: 320px) {
-    .back{
-        display: none;
     }
 }
